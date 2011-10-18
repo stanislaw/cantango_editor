@@ -1,4 +1,4 @@
-require "cantango-editor/engine"
+require "cantango_editor/engine"
 
 module CantangoEditor
 end
