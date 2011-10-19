@@ -25,11 +25,16 @@
         <td> </td>
         <td style="color:grey"> <%= act %> </td> 
         <% [:can, :cannot].each do |can_action| %>
-        <td style="width:300px;"> 
-          <% (@permissions[ptype][pgroup][can_action][act]).each do |model| %>
-            <%= model %>&nbsp;<%= link_to "x", "##" %><br/>
+        <td style="width:350px;"> 
+          <% (targets = @permissions[ptype][pgroup][can_action][act]).each do |model| %>
+            <%= model %>
+            &nbsp; 
+            <small>- more options -</small>
+            <%= link_to "x", "##" %>
+           <br/>
           <% end %>
-          <%= link_to "+", "##" %>
+          <div id="new_target_area"></div>  
+          <%= link_to "+", new_target_permissions_path(:existing_targets => targets), :remote => true, :class => "new_target_link" %>
         </td>
         <% end %>
       </tr>

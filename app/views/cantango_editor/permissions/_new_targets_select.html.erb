@@ -1,0 +1,1 @@
+<%= select("permissions", "targets", CantangoEditor::Permissions.models_available.map{|p| [ p, p ] }, { :include_blank => false, :prompt => "Choose a model" }) %>

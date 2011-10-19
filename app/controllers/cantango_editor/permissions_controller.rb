@@ -1,6 +1,6 @@
 module CantangoEditor
   class PermissionsController < ApplicationController 
-    
+   
     def index
       redirect_to :action => :by_groups_index
     end
@@ -19,9 +19,13 @@ module CantangoEditor
     end
 
     def create
-      puts " #{params.inspect} "
-
       render :js => "location.reload(true);"
+    end
+
+    def new_target
+      respond_to do |format|
+        format.js
+      end
     end
   end
 end
