@@ -2,6 +2,8 @@ module CantangoEditor
   class Permissions
     class << self
 
+      attr_accessor :permissions
+
       def models_available
         ActiveRecord::Base.connection.tables.collect{|t| t.classify.constantize rescue nil }.compact    
       end
@@ -12,6 +14,7 @@ module CantangoEditor
         [:roles, :role_groups]
       end
 
+      # Temporary hash - later bind with CantangoEditor::Configuration friends"
       def permissions_groups
         {
           :roles => [:admin, :user],
@@ -20,7 +23,23 @@ module CantangoEditor
       end
 
       def actions_available
-        [:create, :read, :update, :delete, :manage]
+        [:create, :read, :write, :delete, :manage]
+      end
+
+      # TODO
+      #def parse_yml
+        #@permissions = PermissionsHash[yml_file_content]
+      #end
+      
+      def yml_file_content
+        yml_content = YAML.load_file(permissions_file)
+        PermissionsHash[yml_content]
+      rescue => e
+        raise e
+      end
+
+      def permissions_file
+        File.join(Rails.root, "/config/", "permissions.yml")
       end
     end
   end

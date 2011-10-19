@@ -9,6 +9,7 @@ gemspec
 gem "jquery-rails"
 gem "cantango", :git => "git://github.com/stanislaw/cantango.git"
 gem "sugar-high"
+gem "hashie"
 
 group :development, :test do
   # Dummy app
@@ -19,6 +20,9 @@ group :development, :test do
   # Test
   gem 'rspec-rails'
   gem 'capybara'
+
+  # Server
+  gem 'unicorn'
 end
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or

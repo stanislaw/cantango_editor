@@ -15,6 +15,7 @@ module CantangoEditor
       @models = Permissions.models_available
       @permissions_types = Permissions.permissions_types_available
       @permissions_groups = Permissions.permissions_groups
+      @permissions = Permissions.yml_file_content
     end
 
     def create
