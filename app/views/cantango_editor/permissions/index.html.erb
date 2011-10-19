@@ -4,7 +4,7 @@
   table {border-collapse: collapse;}
   td {border: 1px solid #ccc; padding: 6px; }
 </style>
-<%= form_tag permissions_path, :method => :post do %>
+<%= form_tag permissions_path, :remote => true, :method => :post do %>
 <table>
   <th></th><th>Can</th><th>Cannot</th>
 <% @models.each do |model| %>
@@ -14,7 +14,7 @@
     <td>
       <% [:create, :read, :update, :delete].each do |act| %>
         <%= act %>
-        <%= check_box_tag "permissions[#{can_method}][actions][]", act %> 
+        <%= check_box_tag "permissions[#{can_method}][]", act %> 
       <% end %>
     </td>
     <% end %>

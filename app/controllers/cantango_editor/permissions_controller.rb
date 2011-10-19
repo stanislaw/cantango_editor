@@ -6,6 +6,8 @@ module CantangoEditor
 
     def create
       puts " #{params.inspect} "
+
+      render :js => "location.reload(true);"
     end
   end
 end
