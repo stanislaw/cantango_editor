@@ -1,6 +1,13 @@
 require 'permissions_hash'
 
 describe PermissionsHash do
+  
+  context "#to_hash" do
+    it "should return Hash object" do
+      PermissionsHash.new.to_hash.should == Hash.new
+      PermissionsHash[:a => 2, :b => 2].to_hash.should == {:a => 2, :b => 2}
+    end
+  end
   context "[]" do
     let(:phash) do  
       PermissionsHash.new

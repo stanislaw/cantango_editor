@@ -19,10 +19,19 @@ module CantangoEditor
     end
 
     def create
+      Permissions.save_new_permissions params[:new_permissions]
+      #Permissions.remove_permissions(params[:remove_permissions])
+
       render :js => "location.reload(true);"
     end
 
     def new_target
+      @new_targets_available = Permissions.models_available_names - params[:existing_targets].to_a
+     
+      [:ptype, :pgroup, :can_action, :crud_action].each do |param|
+        instance_variable_set("@#{param}", params[param])
+      end
+
       respond_to do |format|
         format.js
       end

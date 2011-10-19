@@ -8,6 +8,10 @@ module CantangoEditor
         ActiveRecord::Base.connection.tables.collect{|t| t.classify.constantize rescue nil }.compact    
       end
 
+      def models_available_names
+        models_available.map(&:name).unshift "all"
+      end
+      
       # TODO
       def permissions_types_available
         #[:user_types, :account_types, :roles, :role_groups, :licenses, :users]
@@ -30,9 +34,33 @@ module CantangoEditor
       #def parse_yml
         #@permissions = PermissionsHash[yml_file_content]
       #end
+    
+      def permissions
+        @permissions ||= yml_file_content
+      end
+
+      def update_permissions permissions_hash
+        permissions.deep_merge! permissions_hash
+      end
       
+      def save_new_permissions permissions_hash
+        
+        return unless permissions_hash
+        
+        update_permissions permissions_hash
+        persist_permissions! 
+      end
+
+      def persist_permissions!
+ 
+        File.open(permissions_file + ".save", 'w') do |out|
+          YAML.dump(permissions, out)
+        end
+      end
+
       def yml_file_content
         yml_content = YAML.load_file(permissions_file)
+        
         PermissionsHash[yml_content]
       rescue => e
         raise e

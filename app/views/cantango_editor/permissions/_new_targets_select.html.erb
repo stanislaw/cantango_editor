@@ -1,1 +1,5 @@
-<%= select("permissions", "targets", CantangoEditor::Permissions.models_available.map{|p| [ p, p ] }, { :include_blank => false, :prompt => "Choose a model" }) %>
+<div>
+  <%= select("new_permissions", "select", @new_targets_available.map{|p| [ p, p ] }, { :include_blank => false, :prompt => "Choose a model" }, {:name => "new_permissions[#{@ptype}][#{@pgroup}][#{@can_action}][#{@crud_action}][]" }) %>
+
+<%= link_to "x", "##", :onclick => "$(this).parents('div').remove();" %>
+</div>
