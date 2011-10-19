@@ -7,7 +7,7 @@ gemspec
 
 # jquery-rails is used by the dummy application
 gem "jquery-rails"
-gem "cantango"
+gem "cantango", :path => "../../gems/cantango"
 
 group :development, :test do
   # Debug 
