@@ -7,10 +7,12 @@ gemspec
 
 # jquery-rails is used by the dummy application
 gem "jquery-rails"
-gem "cantango", :path => "../../gems/cantango"
+gem "cantango", :git => "git://github.com/stanislaw/cantango.git"
 gem "sugar-high"
 
 group :development, :test do
+  # Dummy app
+  gem 'devise'
   # Debug 
   gem 'cutter'
 
