@@ -156,3 +156,4 @@ DEPENDENCIES
   jquery-rails
   rspec-rails
   sqlite3
+  sugar-high

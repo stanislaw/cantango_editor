@@ -3,6 +3,8 @@ require File.expand_path('../boot', __FILE__)
 require 'rails/all'
 
 Bundler.require
+
+require "cantango"
 require "cantango_editor"
 
 module Dummy
