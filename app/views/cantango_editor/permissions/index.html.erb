@@ -1,30 +1,4 @@
 <h1>Permissions</h1>
 <hr/>
-<style>
-  table {border-collapse: collapse;}
-  td {border: 1px solid #ccc; padding: 6px; }
-</style>
-<%= form_tag permissions_path, :remote => true, :method => :post do %>
-<table>
-  <th></th><th>Can</th><th>Cannot</th>
-<% @models.each do |model| %>
-  <tr>
-    <td rowspan="1"><%= model %></td>
-    <% [:can, :cannot].each do |can_method| %>
-    <td>
-      <% [:create, :read, :update, :delete].each do |act| %>
-        <%= act %>
-        <%= check_box_tag "permissions[#{can_method}][]", act %> 
-      <% end %>
-    </td>
-    <% end %>
-  </tr>
-  <!--tr>
-    <td></td>
-  </tr-->
-<% end %>
-</table>
-<%= submit_tag %>
-<% end %>
-<hr/>
+
 <%= link_to "Main page", main_app.root_path %>
