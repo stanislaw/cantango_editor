@@ -13,7 +13,9 @@ roles:
   admin: 
     can: 
       manage: 
-      - ""
+      - all
+      delete: 
+      - Comment
   user: 
     can: 
       read: 
@@ -26,6 +28,7 @@ roles:
       manage: 
       - Comment
       - Post
+      - Concerto
 role_groups: 
   bloggers: 
     can: 
@@ -39,8 +42,8 @@ role_groups:
   editors: 
     can: 
       read: 
-      - ""
-      - ""
+      - Article
+      - Comment
     cannot: 
       write: 
       - Article

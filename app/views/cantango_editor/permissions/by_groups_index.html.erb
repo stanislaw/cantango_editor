@@ -5,7 +5,8 @@
 <!-- CantangoEditor::Permissions.yml_file_content %-->
 
 <%= form_tag permissions_path, :remote => true, :method => :post do %>
-  
+  <%= submit_tag %>
+
 <% @permissions_types.each do |ptype| %>
 
   <% content_tag :h2, :style => "text-align:center" do %>
@@ -48,7 +49,6 @@
   </table>
 <% end %>
 
-<%= submit_tag %>
 <% end %>
 <hr/>
 <%= link_to "Main page", main_app.root_path %>

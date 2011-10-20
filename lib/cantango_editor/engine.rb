@@ -3,7 +3,9 @@ module CantangoEditor
     isolate_namespace CantangoEditor
   
     config.to_prepare do
-      load "#{CantangoEditor::Engine.config.root}/lib/permissions_hash.rb"    
+      Dir["#{CantangoEditor::Engine.config.root}/lib/*.rb"].each do |f|
+        require_dependency f
+      end
     end
   end
 end

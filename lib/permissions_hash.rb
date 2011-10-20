@@ -1,8 +1,21 @@
+class Hash
+  def to_hash!
+    replace to_hash
+  end
+
+  def to_hash
+    inject({}) do |h, (k,v)|
+      v = v.is_a?(Hash) ? v.to_hash : v
+      h.merge!({k => v})
+    end
+  end
+end
+
 class PermissionsHash < Hash
-  def [] k
+  def [] k, tru = nil
     v = super(k.to_sym) || super(k.to_s)
     
-    return self.class[{}] if v.nil?
+    return self.class[{}] if v.nil? && !tru
     v.kind_of?(Hash) ? self.class[v] : v 
   end
 
@@ -11,16 +24,19 @@ class PermissionsHash < Hash
   end
 
   def to_hash
-    Hash[self]
+    inject({}) do |h, (k,v)|
+      v = v.is_a?(Hash) ? v.to_hash : v
+      h.merge!({k => v})
+    end
   end
 
   def deep_merge_permissions other_hash
-    dup.deep_merge_permissions! other_hash
+    self.dup.deep_merge_permissions! other_hash
   end
 
   def deep_merge_permissions! other_hash
     other_hash.each_pair do |k,v|
-      tv = self[k]
+      tv = self[k, true]
       self[k] = if tv.is_a?(Hash) && v.is_a?(Hash) 
                   tv.deep_merge_permissions(v) 
                 elsif v.is_a?(Array) || tv.is_a?(Array)
@@ -38,7 +54,7 @@ class PermissionsHash < Hash
 
   def deep_remove_permissions! other_hash
     other_hash.each_pair do |k,v|
-      tv = self[k]
+      tv = self[k, true]
       self[k] = if tv.is_a?(Hash) && v.is_a?(Hash) 
                   tv.deep_remove_permissions(v) 
                 elsif v.is_a?(Array) || tv.is_a?(Array)

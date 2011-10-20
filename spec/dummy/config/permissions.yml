@@ -1,61 +1,11 @@
-user_types:
-  admin:
-    can:
-      manage:
-        - all
-
-account_types:
-  editor:
-    can:
-      manage:
-        - all
-
-roles:
-  admin:
-    can:
-      manage:
-      - all
-
-  user:
-    can:
-      read:
-      - Comment
-      - Post
-      - Article
-      - User
-      write:
-      - Article
-      manage:
-      - Comment
-      - Post
-
-role_groups:
-  bloggers: 
+--- 
+roles: 
+  admin: 
     can: 
-      read: 
-      - Article
-      - Comment
+      create: 
+      - Song
     cannot: 
-      write: 
-      - Article
-      - Post
-  editors: 
-    can: 
       read: 
-      - Article
       - Comment
-    cannot: 
-      write: 
-      - Article
-      - Post
-
-licenses:
-  editors:
-    can:
-      manage:
-      - all
-
-users:
-  kris@gmail.com:
-    can:
-    cannot:
+      - Concerto
+role_groups: 

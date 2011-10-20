@@ -18,6 +18,11 @@ module CantangoEditor
         [:roles, :role_groups]
       end
 
+      def permissions_types_nil_hash
+        permissions_types_available.inject({}) do |result_hash, pt|
+          result_hash.merge!({pt.to_s => nil})
+        end
+      end
       # Temporary hash - later bind with CantangoEditor::Configuration friends"
       def permissions_groups
         {
@@ -30,51 +35,75 @@ module CantangoEditor
         [:create, :read, :write, :delete, :manage]
       end
 
-      # TODO
-      #def parse_yml
-        #@permissions = PermissionsHash[yml_file_content]
-      #end
-    
       def permissions
         @permissions ||= yml_file_content
       end
 
-      def update_permissions permissions_hash
+      def update_permissions! params
+        save_new_permissions params[:new_permissions]
+        remove_and_save_permissions params[:delete_permissions]
+      end
+
+      def update_new_permissions permissions_hash
         permissions.deep_merge_permissions! permissions_hash
       end
-      
+    
+      def update_remove_permissions permissions_hash
+        permissions.deep_remove_permissions! permissions_hash
+      end
+
       def remove_and_save_permissions permissions_hash
+
         return unless permissions_hash
         
-        update_permissions permissions_hash
+        update_remove_permissions permissions_hash
         persist_permissions! 
       end
 
       def save_new_permissions permissions_hash
         
         return unless permissions_hash
-        
-        update_permissions permissions_hash
+
+        update_new_permissions permissions_hash
         persist_permissions! 
       end
 
       def persist_permissions!
- 
-        File.open(permissions_file + ".save", 'w') do |out|
+        File.open(permissions_file, 'w') do |out|
           YAML.dump(permissions, out)
         end
       end
 
       def yml_file_content
         yml_content = YAML.load_file(permissions_file)
-        
+        validate_content yml_content
+
         PermissionsHash[yml_content]
       rescue => e
         raise e
       end
 
+      def validate_content yml_content
+        raise "#{permissions_file} should contain Hash-based information" unless yml_content.is_a?(Hash)
+        raise "#{permissions_file} should not contain permission_types not listed in #permissions_types_available" if (yml_content.keys - permissions_types_available.to_strings).size > 0
+      end
+
       def permissions_file
-        File.join(Rails.root, "/config/", "permissions.yml")
+        create_empty_permissions_file if !File.file? permissions_file_path
+        
+        permissions_file_path
+      end
+
+      def create_empty_permissions_file
+        File.open(permissions_file_path, 'w') do |file|
+          YAML.dump(permissions_types_nil_hash, file)
+        end
+
+        permissions_file_path
+      end
+
+      def permissions_file_path
+        File.join Rails.root + "config/" + "permissions.yml"
       end
     end
   end
