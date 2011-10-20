@@ -35,5 +35,9 @@ module CantangoEditor
         format.js
       end
     end
+
+    def preview_raw
+      @permissions_content = Permissions.raw_file_content
+    end
   end
 end

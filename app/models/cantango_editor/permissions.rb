@@ -78,6 +78,17 @@ module CantangoEditor
         end
       end
 
+      def raw_file_content
+        raw_content = ""
+        File.open(permissions_file, 'r') do |f|
+          raw_content = f.read
+        end
+     
+        raw_content
+      rescue => e
+        raise e
+      end
+
       def yml_file_content
         yml_content = YAML.load_file(permissions_file)
         validate_content yml_content
