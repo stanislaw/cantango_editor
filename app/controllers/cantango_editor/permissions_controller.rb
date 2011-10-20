@@ -20,7 +20,7 @@ module CantangoEditor
 
     def create
       Permissions.save_new_permissions params[:new_permissions]
-      #Permissions.remove_permissions(params[:remove_permissions])
+      Permissions.remove_and_save_permissions params[:delete_permissions]
 
       render :js => "location.reload(true);"
     end

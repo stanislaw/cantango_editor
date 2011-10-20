@@ -13,10 +13,7 @@ roles:
   admin: 
     can: 
       manage: 
-      - all
-    cannot: 
-      create: 
-      - Comment
+      - ""
   user: 
     can: 
       read: 
@@ -42,8 +39,8 @@ role_groups:
   editors: 
     can: 
       read: 
-      - Article
-      - Comment
+      - ""
+      - ""
     cannot: 
       write: 
       - Article

@@ -40,9 +40,16 @@ module CantangoEditor
       end
 
       def update_permissions permissions_hash
-        permissions.deep_merge! permissions_hash
+        permissions.deep_merge_permissions! permissions_hash
       end
       
+      def remove_and_save_permissions permissions_hash
+        return unless permissions_hash
+        
+        update_permissions permissions_hash
+        persist_permissions! 
+      end
+
       def save_new_permissions permissions_hash
         
         return unless permissions_hash

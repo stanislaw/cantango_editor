@@ -12,6 +12,12 @@ $(document).ready(function() {
   $('.new_target_link').live('click', function(event){
     // event.preventDefault(); 
     $(this).addClass("link_processing");
+    return false;
+  });
+  
+  $('.delete_target_link').live('click', function(event){
+    $(this).prev().removeAttr('disabled');
+    return false;
   });
 });
 
