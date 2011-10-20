@@ -2,12 +2,28 @@ require 'permissions_hash'
 
 describe PermissionsHash do
   
+  context "#deep_merge_permissions!" do
+
+    it "should accumulate arrays if other_hash's end values are arrays" do
+      result = PermissionsHash[{:a => 1, :c => {:b => [1, 2, 3]}} ].deep_merge_permissions!({:a => 1, :c => {:b => [2, 4]}} )
+      result.should == {:a => 1, :c => {:b => [1, 2, 3, 4]}}
+    end
+  end
+
+  context "#deep_remove_permissions!" do
+    it "should accumulate arrays if other_hash's end values are arrays" do
+      result = PermissionsHash[{:a => 1, :c => {:b => [1, 2, 3]}}].deep_remove_permissions!({:a => 1, :c => {:b => [2, 4]}})
+      result.should == {:a => 1, :c => {:b => [1, 3]}}
+    end
+  end
+  
   context "#to_hash" do
     it "should return Hash object" do
       PermissionsHash.new.to_hash.should == Hash.new
       PermissionsHash[:a => 2, :b => 2].to_hash.should == {:a => 2, :b => 2}
     end
   end
+  
   context "[]" do
     let(:phash) do  
       PermissionsHash.new
