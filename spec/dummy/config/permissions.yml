@@ -3,9 +3,11 @@ roles:
   admin: 
     can: 
       create: 
-      - Song
-    cannot: 
-      read: 
       - Comment
-      - Concerto
+      read: 
+      - Article
+  user: 
+    can: 
+      create: 
+      - Improvisation
 role_groups: 

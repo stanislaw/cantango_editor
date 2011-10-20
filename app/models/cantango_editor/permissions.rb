@@ -53,7 +53,6 @@ module CantangoEditor
       end
 
       def remove_and_save_permissions permissions_hash
-
         return unless permissions_hash
         
         update_remove_permissions permissions_hash
@@ -61,7 +60,6 @@ module CantangoEditor
       end
 
       def save_new_permissions permissions_hash
-        
         return unless permissions_hash
 
         update_new_permissions permissions_hash
@@ -69,8 +67,14 @@ module CantangoEditor
       end
 
       def persist_permissions!
+       
+        yml = YAML.dump(permissions)
+
+        # Sanitize permissions hash
+        yml.gsub!(/\!map.*\s/,'')
+
         File.open(permissions_file, 'w') do |out|
-          YAML.dump(permissions, out)
+          out.write yml
         end
       end
 
