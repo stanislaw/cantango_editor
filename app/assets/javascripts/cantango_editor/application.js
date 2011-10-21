@@ -6,8 +6,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
-//
+// require_tree .
+
 $(document).ready(function() {
   $('.new_target_link').live('click', function(event){
     // event.preventDefault(); 
