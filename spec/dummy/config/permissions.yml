@@ -15,8 +15,8 @@ roles:
     cannot: 
       create: []
 
-      read: []
-
+      read: 
+      - Article
       write: []
 
       delete: []
@@ -25,8 +25,8 @@ roles:
 
   user: 
     can: 
-      create: []
-
+      create: 
+      - Article
       read: []
 
     cannot: 

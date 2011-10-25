@@ -14,9 +14,7 @@ $(document).ready(function() {
   $('.new_target_link:not([disabled=disabled])').live('click', function(event){
     // event.preventDefault(); 
     $(this).addClass("link_processing");
-    
     $('.models_select_close_link').trigger('click');
-
     return false;
   });
  
@@ -29,12 +27,14 @@ $(document).ready(function() {
 
   // Hovers events for table cells
   $('.models_cell').live('mouseenter', function(event){
-    $('.new_target_link').css('visibility', 'hidden');     
-    $(this).children('.new_target_link').css('visibility', 'visible');
+    timeou = setTimeout(function(target){
+      $(target).children('.new_target_link').css('visibility', 'visible')
+    }, 150, this);
   });
 
   $('.models_cell').live('mouseleave', function(event){ 
-    $(this).children('.new_target_link').css('visibility', 'hidden');
+    clearTimeout(timeou);
+    $('.new_target_link').css('visibility', 'hidden');     
   });
   
   // Enable selectmenu() on <select>
