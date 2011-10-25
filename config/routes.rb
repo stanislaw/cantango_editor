@@ -2,6 +2,8 @@ CantangoEditor::Engine.routes.draw do
   resources :permissions do
     collection do
       get :new_target
+      get :new_custom_target
+      get :new_category
       get :preview_raw
       post :update
     end

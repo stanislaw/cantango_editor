@@ -1,0 +1,4 @@
+$('.link_processing').before('<%= escape_javascript(render :partial => "new_categories_select") %>');
+$('.link_processing').prev('.models_select_block').children('.models_select').trigger('ajaxLoad');
+
+$('.link_processing').removeClass("link_processing");

@@ -30,7 +30,9 @@
            <br/>
           <% end %>
           <div id="new_target_area"></div>  
-          <%= link_to "+", new_target_permissions_path(:ptype => ptype, :pgroup => pgroup, :can_action => can_action, :crud_action => crud_action, :existing_targets => targets), :remote => true, :class => "new_target_link" %>
+          <%= link_to "+m", new_target_permissions_path(:ptype => ptype, :pgroup => pgroup, :can_action => can_action, :crud_action => crud_action, :existing_targets => targets), :remote => true, :class => "new_target_link" %>          
+          <%= link_to "+c", new_category_permissions_path(:ptype => ptype, :pgroup => pgroup, :can_action => can_action, :crud_action => crud_action, :existing_targets => targets), :remote => true, :class => "new_target_link" %>
+          <%= link_to "+t", new_custom_target_permissions_path(:ptype => ptype, :pgroup => pgroup, :can_action => can_action, :crud_action => crud_action, :existing_targets => targets), :remote => true, :class => "new_target_link" %>
         </td>
         <% end %>
       </tr>

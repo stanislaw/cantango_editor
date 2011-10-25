@@ -39,6 +39,10 @@ module CantangoEditor
         [:create, :read, :write, :delete, :manage]
       end
 
+      def categories_available
+        ['^complex_music', '^texts']
+      end
+
       def permissions
         @permissions ||= yml_file_content
       end
