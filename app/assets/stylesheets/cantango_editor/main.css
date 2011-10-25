@@ -1,15 +1,26 @@
+/* Highlight not-done links */
+a[href^="##"] { 
+  padding-right:14px !important; color:#888 !important;
+  background:url(/assets/cantango_editor/ico-uc.png) center right no-repeat; cursor:default; 
+}
 
-a[href^="##"] { padding-right:14px !important; color:#888 !important;
-background:url(/assets/cantango_editor/ico-uc.png) center right no-repeat; cursor:default; }
+/* Basic */
 
 body {background-color:#fff;}
+
 .new_target_link {visibility:hidden}
 
+/* Permissions table */
 table {border-collapse: collapse;}
 table .models_cell { width:350px;border:1px solid #eee; }
 table .actions_cell { color:grey }
 
-//td {border: 0px solid #ccc; padding: 6px; }
-//th {font-size:24px; color:#aaa;}
-//th.permissions_type { color:orange;}
-//div#preview_links {text-align:right;}
+/* Targets representation */
+.model_category { color: #666; }
+
+.model_regex_slash { color: #669900; font-size:18px; font-weight:bold; }
+
+.model_relationship_equals { color: orange; font-size:18px; font-weight: bold;}
+.model_relationship_sharp { color: red; font-size:18px; font-weight: bold;}
+
+.model_ownership_sharp { color: red; font-size:18px; font-weight: bold;}

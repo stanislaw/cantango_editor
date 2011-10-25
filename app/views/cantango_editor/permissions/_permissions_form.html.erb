@@ -19,7 +19,7 @@
         <% [:can, :cannot].each do |can_action| %>
         <td class="models_cell"> 
           <% (targets = @permissions[ptype][pgroup][can_action][crud_action]).each do |model| %>
-            <%= model %>
+            <%= model_tag model %>
             &nbsp; 
             <!-- TODO: Options for applying '//', '^' or others to given model -->
             <!--small>- more options -</small-->
