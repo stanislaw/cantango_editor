@@ -1,11 +1,7 @@
 <%= form_tag permissions_path, :remote => true, :method => :post do %>
-  <%= submit_tag %>
+  <!-- submit_tag -->
 
 <% @permissions_types.each do |ptype| %>
-
-  <% content_tag :h2, :style => "text-align:center" do %>
-    <%= ptype %>
-  <% end %>
 
   <table>
     <th class="permissions_type">
@@ -13,22 +9,23 @@
     </th>
     <% @permissions_groups[ptype].each do |pgroup| %>
       <tr>
-        <td colspan="4" style="font-size:18px;color:green;" ><%= pgroup %></td><!--td></td><td></td><td></td-->
+        <td colspan="4"><%= pgroup %></td><!--td></td><td></td><td></td-->
       </tr>    
       <th></th> <th></th>  <th>can </th>  <th>cannot</th>
       <% @actions.each do |crud_action| %> 
       <tr> 
         <td> </td>
-        <td style="color:grey"> <%= crud_action %> </td> 
+        <td class="actions_cell"> <%= crud_action %> </td> 
         <% [:can, :cannot].each do |can_action| %>
         <td class="models_cell"> 
           <% (targets = @permissions[ptype][pgroup][can_action][crud_action]).each do |model| %>
             <%= model %>
             &nbsp; 
-            <small>- more options -</small>
+            <!-- TODO: Options for applying '//', '^' or others to given model -->
+            <!--small>- more options -</small-->
             <span class="delete_target_section">
               <%= hidden_field_tag "delete_target_field", model, :class => "delete_target_field", :name => "delete_permissions[#{ptype}][#{pgroup}][#{can_action}][#{crud_action}][]", :disabled => "disabled" %>
-              <%= link_to "x", "##", :class => "delete_target_link" %>
+              <%= link_to "x", "#", :class => "delete_target_link" %>
             </span>
            <br/>
           <% end %>
@@ -38,7 +35,7 @@
         <% end %>
       </tr>
       <% end %>
-      <tr><td colspan="4" style=""></td></tr>
+      <tr><td colspan="4"></td></tr>
     <% end %>
   </table>
 <% end %>

@@ -3,7 +3,7 @@ roles:
   admin: 
     can: 
       create: 
-      - Article
+      - Post
       read: []
 
       write: []
@@ -27,9 +27,9 @@ roles:
     can: 
       create: []
 
-      read: 
-      - Article
+      read: []
+
     cannot: 
-      create: 
-      - Article
+      create: []
+
 role_groups: 
