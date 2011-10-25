@@ -4,11 +4,17 @@ roles:
     can: 
       create: 
       - Comment
+      - Post
       read: 
-      - Article
-      - Comment
       - Tune
       - Concerto
+      - ""
+      - Song
+    cannot: 
+      create: []
+
+      read: []
+
   user: 
     can: 
       create: 

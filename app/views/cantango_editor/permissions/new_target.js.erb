@@ -1,3 +1,5 @@
 $('.link_processing').before('<%= escape_javascript(render :partial => "new_targets_select") %>');
 $('.link_processing').prev('.models_select_block').children('.models_select').trigger('ajaxLoad');
+$('.new_target_link').attr('disabled', 'disabled');
+
 $('.link_processing').removeClass("link_processing");

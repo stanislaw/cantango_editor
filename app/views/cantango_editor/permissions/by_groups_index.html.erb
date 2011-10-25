@@ -27,7 +27,7 @@
         <td> </td>
         <td style="color:grey"> <%= crud_action %> </td> 
         <% [:can, :cannot].each do |can_action| %>
-        <td style="width:350px;"> 
+        <td class="models_cell"> 
           <% (targets = @permissions[ptype][pgroup][can_action][crud_action]).each do |model| %>
             <%= model %>
             &nbsp; 
