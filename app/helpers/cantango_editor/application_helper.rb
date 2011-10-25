@@ -10,7 +10,7 @@ module CantangoEditor
         slash_tag + modeltag + slash_tag
       when regex = /^\^(\w+)/ # a category is prefixed with a '^<D-^>s'
         model = model[regex][$1]
-        model = model.scan(/[A-Za-z]+/).map{|m| m.camelize}.join(" ")
+        model = model.humanize
         
         # TODO: category aliases here
         content_tag :span, model, :class => "model_category"
