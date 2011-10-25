@@ -16,7 +16,7 @@ table .models_cell { width:350px;border:1px solid #eee; }
 table .actions_cell { color:grey }
 
 /* Targets representation */
-.model_category { color: #666; }
+.model_category { color: #339999; font-size: 14px; font-style: italic; font-weight:bold;}
 
 .model_regex_slash { color: #669900; font-size:18px; font-weight:bold; }
 
