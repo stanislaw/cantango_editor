@@ -2,30 +2,34 @@
 roles: 
   admin: 
     can: 
-      create: []
+      create: 
+      - Article
+      read: []
 
-      read: 
-      - Tune
-      - Concerto
       write: []
 
-      manage: 
-      - Article
-      delete: 
-      - Article
+      manage: []
+
+      delete: []
+
     cannot: 
       create: []
 
-      read: 
-      - Article
+      read: []
+
       write: []
 
-      delete: 
-      - Article
-      manage: 
-      - Comment
+      delete: []
+
+      manage: []
+
   user: 
     can: 
+      create: []
+
+      read: 
+      - Article
+    cannot: 
       create: 
-      - Improvisation
+      - Article
 role_groups: 
