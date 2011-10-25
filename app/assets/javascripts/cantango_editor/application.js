@@ -6,7 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-// require_tree .
+//= require_tree .
 
 $(document).ready(function() {
   $('.new_target_link').live('click', function(event){
@@ -19,5 +19,8 @@ $(document).ready(function() {
     $(this).prev().removeAttr('disabled');
     return false;
   });
-});
 
+  $('.models_select').live('ajaxLoad', function(){
+    $(this).selectmenu({style:'popup', width: 220, maxHeight:200});
+  });
+});

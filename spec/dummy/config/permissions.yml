@@ -6,6 +6,9 @@ roles:
       - Comment
       read: 
       - Article
+      - Comment
+      - Tune
+      - Concerto
   user: 
     can: 
       create: 

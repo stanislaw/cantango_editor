@@ -1,6 +1,5 @@
-<%= javascript_include_tag "jquery.ui/jquery.ui.core.js" %>
-<div>
-  <%= select("new_permissions", "select", @new_targets_available.map{|p| [ p, p ] }, { :include_blank => false, :prompt => "Choose a model" }, {:name => "new_permissions[#{@ptype}][#{@pgroup}][#{@can_action}][#{@crud_action}][]" }) %>
-  <%= javascript_tag "$('#new_permissions_select').selectmenu();" %>
-<%= link_to "x", "##", :onclick => "$(this).parents('div').remove();" %>
+<div class="models_select_block">
+  <%= select("new_permissions", "select", @new_targets_available.map{|p| [ p, p ] }, { :include_blank => false, :prompt => "Choose a model" }, {:name => "new_permissions[#{@ptype}][#{@pgroup}][#{@can_action}][#{@crud_action}][]", :class => "models_select"}  ) %>
+  
+  <%= link_to "x", "##", :onclick => "$(this).parents('div').remove();" %>
 </div>
