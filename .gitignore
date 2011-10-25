@@ -3,3 +3,4 @@
 pkg/
 *.sqlite3
 spec/dummy/tmp/
+permissions.yml
