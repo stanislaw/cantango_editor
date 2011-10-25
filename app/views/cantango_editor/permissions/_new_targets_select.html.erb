@@ -1,5 +1,5 @@
 <div class="models_select_block">
   <%= select("new_permissions", "select", @new_targets_available.map{|p| [ p, p ] }, { :include_blank => false, :prompt => "Choose a model" }, {:name => "new_permissions[#{@ptype}][#{@pgroup}][#{@can_action}][#{@crud_action}][]", :class => "models_select"}  ) %>
   
-  <%= link_to "x", "##", :onclick => "$(this).parents('div').remove();" %>
+  <%= link_to "x", "##", :class => "models_select_close_link" %>
 </div>

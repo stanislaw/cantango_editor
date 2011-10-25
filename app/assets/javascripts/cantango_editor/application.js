@@ -12,6 +12,9 @@ $(document).ready(function() {
   $('.new_target_link:not([disabled=disabled])').live('click', function(event){
     // event.preventDefault(); 
     $(this).addClass("link_processing");
+    
+    $('.models_select_close_link').trigger('click');
+
     return false;
   });
   
@@ -33,5 +36,10 @@ $(document).ready(function() {
 
   $('.models_select').live('ajaxLoad', function(){
     $(this).selectmenu({style:'popup', width: 220, maxHeight:200, change: function(e, object){$('form').submit();}});
+  });
+
+  $('.models_select_close_link').live('click', function(){
+    $('.new_target_link').removeAttr('disabled');
+    $(this).parents('div').remove();
   });
 });
