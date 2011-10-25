@@ -37,7 +37,7 @@ module CantangoEditor
     end
 
     def new_category
-      @new_categories_available = Permissions.categories_available - params[:existing_targets].to_a
+      @new_categories_available = Categories.available_except(params[:existing_targets].to_a)
     end
     
     def preview_raw

@@ -1,5 +1,5 @@
 <div class="models_select_block">
-  <%= select("new_permissions", "select", @new_categories_available.map{|p| [ p, p ] }, { :include_blank => false, :prompt => "Choose a category" }, {:name => "new_permissions[#{@ptype}][#{@pgroup}][#{@can_action}][#{@crud_action}][]", :class => "models_select"}  ) %>
+  <%= select("new_permissions", "select", @new_categories_available.map{|p| [ p.human_name, p.name ] }, { :include_blank => false, :prompt => "Choose a category" }, {:name => "new_permissions[#{@ptype}][#{@pgroup}][#{@can_action}][#{@crud_action}][]", :class => "models_select"}  ) %>
   
   <%= link_to "x", "##", :class => "models_select_close_link" %>
 </div>
