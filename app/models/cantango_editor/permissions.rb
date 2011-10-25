@@ -20,7 +20,11 @@ module CantangoEditor
 
       def permissions_types_nil_hash
         permissions_types_available.inject({}) do |result_hash, pt|
-          result_hash.merge!({pt.to_s => nil})
+          roles_hash = permissions_groups[pt].inject({}) do |rh, r|
+            rh.merge({r.to_s => nil})
+          end
+          
+          result_hash.merge!({pt.to_s => roles_hash})
         end
       end
       # Temporary hash - later bind with CantangoEditor::Configuration friends"
@@ -71,7 +75,7 @@ module CantangoEditor
         yml = YAML.dump(permissions)
 
         # Sanitize permissions hash
-        yml.gsub!(/\!map.*\s/,'')
+        yml.gsub!(/\!map.*\s/,"\n")
 
         File.open(permissions_file, 'w') do |out|
           out.write yml
