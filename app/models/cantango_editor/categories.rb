@@ -5,7 +5,7 @@ module CantangoEditor
     attr_accessor :available
 
     def available_except existing_targets = []
-      (available_names - existing_targets).map{|c| Category.new(c) }   
+      available.select{|c| (available_names - existing_targets).include? c.name}
     end
  
     def available_names
@@ -13,14 +13,18 @@ module CantangoEditor
     end
   
     def available
-      yml_file_content.keys.map{|c| Category.new(c) }
+      yml_file_content.inject([]) do |categories, (category, targets)| 
+        categories << Category.new(category, targets) 
+      end
     end
 
     def yml_file_content
       yml_content = YAML.load_file(categories_file)
       validate_content yml_content
 
-      yml_content
+      yml_content || {}
+    rescue => e
+      raise e
     end
 
     def validate_content content

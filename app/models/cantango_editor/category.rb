@@ -1,17 +1,21 @@
 module CantangoEditor
   class Category
 
-    attr_reader :name, :alias_name
+    attr_reader :name
 
     # TODO: Should we opt aliases in the categories.yml?
 
-    def initialize name, alias_name = nil
-      @name = name 
-      @alias_name = alias_name
+    def initialize category_name, targets_string
+      @category_name = category_name
+      #@targets = targets_string
+    end
+
+    def name
+      "^" << @category_name
     end
 
     def human_name
-      alias_name || name.gsub(/\^/,'').humanize
+      name.gsub(/\^/,'').humanize
     end
   end
 end

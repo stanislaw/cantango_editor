@@ -4,3 +4,7 @@ articles:
   [Article, Post, Comment]
 user_models: 
   [Admin, Guest, User]
+complex_music:
+  [Concerto, Improvisation]
+simple_music:
+  [Song, Tune]
