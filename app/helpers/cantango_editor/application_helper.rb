@@ -34,7 +34,7 @@ module CantangoEditor
         owner = match[$2]
  
         modeltag = content_tag :span, model, :class => "model_ownership_model"
-        owner_tag = content_tag :span, model, :class => "model_ownership_owner"       
+        owner_tag = content_tag :span, owner, :class => "model_ownership_owner"       
         sharp_tag = content_tag :span, '#', :class => "model_ownership_sharp"  
 
         modeltag + sharp_tag + owner_tag
