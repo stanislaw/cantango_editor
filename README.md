@@ -2,7 +2,9 @@
 
 Cantango Editor is a Rails mountable Engine providing web-interface for editing [CanTango](https://github.com/kristianmandrup/cantango) gem's permissions for any Rails 3 app.
 
-It is no more than a nice-looking wrapper interface which is used for editing permissions stored in special yaml file.
+## What it does
+
+It is no more than a nice-looking wrapper interface which is used for editing permissions stored in special yaml file: be default it is a config/permissions.yml. See "Yaml Permissions store" section on [Permissions](https://github.com/kristianmandrup/cantango/wiki/Permissions) for more details. 
 
 ## Installiation
 
@@ -51,6 +53,17 @@ end
 
 mount CantangoEditor::Engine => "/cantango_editor"
 ```
+
+## Important note!
+
+Cantango is heavily based on CanCan authorization system.
+If you want to have good understanding of how Cantango's permissions rules work we recommend
+carefully read these sections from CanCan's wiki:
+
+- [Defining
+  abilities](https://github.com/ryanb/cancan/wiki/Defining-Abilities)
+- [Abilities
+  Precedence](https://github.com/ryanb/cancan/wiki/Ability-Precedence)
 
 ## Todo:
 
