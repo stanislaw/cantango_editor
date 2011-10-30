@@ -6,8 +6,8 @@ module CantangoEditor
     def index
       @actions = Permissions.actions_available     
       @models = Permissions.models_available
-      @permissions_types = Permissions.permissions_types_available
-      @permissions_groups = Permissions.permissions_groups
+      @permission_types = Permissions.permission_types_available
+      @permission_groups = Permissions.permission_groups_available
       @permissions = Permissions.yml_file_content
 
       respond_to do |format|

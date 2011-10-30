@@ -1,11 +1,11 @@
 <%= form_tag permissions_path, :class => 'permissions_form', :remote => true, :method => :post do %>
   <!-- submit_tag -->
   
-<% @permissions_types.each do |ptype| %>  
+<% @permission_types.each do |ptype| %>  
 
       <h2 class="permissions_type"><%= ptype %>:</h2>
 
-    <% @permissions_groups[ptype].each do |pgroup| %>
+    <% (@permission_groups[ptype] || []).each do |pgroup| %>
     
     <div class="permission_group_section wrapper">
 
