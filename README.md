@@ -31,15 +31,22 @@ Create file cantango_editor.rb in config/initializers and write there:
 # Your_app's root/config/initializers/cantango_editor.rb
 CantangoEditor.configure do |config|
 
+  # Permission types to be displayed in interface
   # default: [:user_types, :account_types, :roles, :role_groups, :licenses, :users]
   config.permission_types_available = [:roles, :role_groups] 
-  
-  # default: { :roles => [:admin, :user] }
+
+  # This one is actual only if you don't have existing permissions.yml.
+  # If so, CantangoEditor will create it and fill it with these
+  # permission_groups mentioned
+  # If you do not enumerate all permission_types here - 
+  # those that are unmentioned here will just appear empty, having no permission_groups.
+  # default: { :roles => [:admin, :user] }. 
   config.permission_groups_available = { :roles => [:guest, :user], :user_types => [:admin] }
 
   # default: all Models extracted from ActiveRecord's tables list
   config.models_available = config.models_default - [Admin, CustomSession]
 
+  # Cancan's actions
   # default: [:create, :read, :update, :delete, :manage]
   config.actions_available = config.actions_default | [:write, :assign_roles]
 end
@@ -57,8 +64,7 @@ mount CantangoEditor::Engine => "/cantango_editor"
 ## Important note!
 
 Cantango is heavily based on CanCan authorization system.
-If you want to have good understanding of how Cantango's permissions rules work we recommend
-carefully read these sections from CanCan's wiki:
+If you want to have good understanding of how Cantango's permissions rules work we recommend you to read carefully these sections from CanCan's wiki:
 
 - [Defining
   abilities](https://github.com/ryanb/cancan/wiki/Defining-Abilities)
