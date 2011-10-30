@@ -33,11 +33,8 @@ CantangoEditor.configure do |config|
 
   # Permission types to be displayed in interface
   # default: [:user_types, :account_types, :roles, :role_groups, :licenses, :users]
-  config.permission_types_available = [:roles, :role_groups] 
+  config.permission_types_available = [:roles, :user_types] 
 
-  # This one is actual only if you don't have existing permissions.yml.
-  # If so, CantangoEditor will create it and fill it with these
-  # permission_groups mentioned
   # If you do not enumerate all permission_types here - 
   # those that are unmentioned here will just appear empty, having no permission_groups.
   # default: { :roles => [:admin, :user] }. 
