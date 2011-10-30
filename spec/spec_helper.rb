@@ -2,6 +2,11 @@
 ENV["RAILS_ENV"] = "test"
 
 require File.expand_path("../dummy/config/environment.rb",  __FILE__)
+require "sugar-high/dsl"
+
+require "rspec/rails"
+
+require "capybara/rails"
 
 #require "rails/test_help"
 

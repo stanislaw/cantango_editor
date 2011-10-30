@@ -9,7 +9,7 @@ describe CantangoEditor do
   it ".configure" do
     CantangoEditor.configure do |config|
       config.models_available = ["Post"]
-    end
+    end.should == CantangoEditor::Configuration
 
     CantangoEditor.config.models_available.should == ["Post"]
   end
