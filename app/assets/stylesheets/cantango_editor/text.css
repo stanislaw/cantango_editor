@@ -3,11 +3,12 @@
 /* =Basic HTML
 --------------------------------------------------------------------------------*/
 
-body
+body, html
 {
-	font: 12px Arial, 'Liberation Sans', FreeSans, sans-serif;
+	font: 12px "Trebuchet MS", 'Liberation Sans', FreeSans, sans-serif;
 	line-height:140%;
 }
+
 
 a:focus
 {
@@ -31,7 +32,7 @@ h2,
 h3,
 h4,
 h5,
-h6 { }
+h6 { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;}
 
 h1
 {

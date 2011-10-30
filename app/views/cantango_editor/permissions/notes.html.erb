@@ -1,4 +1,11 @@
-<%= render :partial => "menu" %>
+<div class="header">
+  <div class="header-l"></div>
+  <h1><%= link_to "Application_name", main_app.root_path %> <span><%= link_to "Permissions", permissions_path %></span></h1>
+  <div class="header-r"></div>
+  <%= render :partial => 'menu' %>
+</div>
+
+<br/>
 <br/>
 
 TODO:

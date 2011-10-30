@@ -14,8 +14,8 @@ body
   margin:40px;
 }
 
-a, a:link, a:visited {text-decoration:none; color:#fff;}
-a:hover {text-decoration:none; color:#ffffcc;}
+a, a:link, a:visited {text-decoration:none; }
+a:hover {text-decoration:none;}
 
 /* Header */
 
@@ -24,9 +24,10 @@ a:hover {text-decoration:none; color:#ffffcc;}
 .header-r {height:62px; width:40px; float:right; background:url(/assets/cantango_editor/panel-r.gif) right;}
 .header H1 {
   float:left; margin-top:21px;
-  font-family:Arial, Helvetica, sans-serif; font-size:18px; font-weight:normal;}
-.header H1 a:link {color:#fff; text-shadow:0 -1px 1px #525239;}
-.header H1 span a, .header H1 span a:link {color:#000; text-shadow:none;}
+  font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:18px; font-weight:normal;}
+.header H1 a, .header H1 a:link, .header H1 a:visited {color:#fff; text-shadow:0 -1px 1px #525239;}
+.header H1 a:hover {color:#ffffcc;}
+.header H1 span a, .header H1 span a:link, .header H1 span a:visited  {color:#000; text-shadow:none;}
 .header H1 span a:hover {color:#666;}
 
 ul.topmenu {float:right; padding:0; list-style:none; margin-top:15px;}
@@ -207,6 +208,37 @@ a.delete_target_link:hover {
 .model_ownership_sharp { color: #cc3333; font-size:18px; font-weight: bold;}
   
 .new_target_area {}
+
+.models_select {
+  margin:10px 0;
+  width:300px;
+}
+
+.ui-selectmenu {
+  margin:10px 0;
+}
+.ui-widget {
+    font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+    //font-size: 12px;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background: url(/assets/cantango_editor/bg.gif) repeat scroll 50% 50% #F8F7F6;
+    border: 1px solid #99997f;
+    color: #654B24;
+    font-weight: bold;
+}
+.ui-widget-content {
+    background: url(/assets/cantango_editor/bg-2.gif) repeat scroll 50% 50% #F8F7F6;
+    border: 1px solid #bbbb98;
+    color: #1F1F1F;
+}
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+  border: 1px solid #99997f; background: url(/assets/cantango_editor/bg-1.gif) repeat scroll 50% 50% #F8F7F6; 
+font-weight: bold; color: #ffffff; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+  border: 1px solid #99997f; background: url(/assets/cantango_editor/bg-2.gif) repeat scroll 50% 50% #F8F7F6; 
+  font-weight: bold; color: #140f06; }
+
 
 </style>
 <% end %>
