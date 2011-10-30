@@ -9,4 +9,15 @@ require "sugar-high/dsl"
 
 module CantangoEditor
   autoload_modules :Configuration
+
+  extend self
+
+  def configure &block
+    yield config
+    config
+  end
+
+  def config
+    CantangoEditor::Configuration
+  end
 end
