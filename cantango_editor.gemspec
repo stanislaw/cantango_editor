@@ -7,9 +7,9 @@ require "cantango_editor/version"
 Gem::Specification.new do |s|
   s.name        = "cantango_editor"
   s.version     = CantangoEditor::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
+  s.authors     = ["Stanislaw Pankevich"]
+  s.email       = ["s.pankevich@gmail.com"]
+  s.homepage    = "https://github.com/stanislaw/cantango_editor"
   s.summary     = "TODO: Summary of CantangoEditor."
   s.description = "TODO: Description of CantangoEditor."
 
@@ -18,6 +18,4 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 3.1.1"
   # s.add_dependency "jquery-rails"
-
-  s.add_development_dependency "sqlite3"
 end
