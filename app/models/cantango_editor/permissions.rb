@@ -4,39 +4,29 @@ module CantangoEditor
 
       attr_accessor :permissions
 
-      def models_available
-        ActiveRecord::Base.connection.tables.collect{|t| t.classify.constantize rescue nil }.compact    
+      configuration_methods = [ :models_available, 
+                                :permission_types_available, 
+                                :permission_groups_available, 
+                                :actions_available ]
+
+      delegate *configuration_methods, :to => :configuration
+
+      def configuration
+        CantangoEditor::Configuration
       end
 
       def models_available_names
         models_available.map(&:name).unshift "all"
       end
       
-      # TODO
-      def permissions_types_available
-        #[:user_types, :account_types, :roles, :role_groups, :licenses, :users]
-        [:roles, :role_groups]
-      end
-
-      def permissions_types_nil_hash
-        permissions_types_available.inject({}) do |result_hash, pt|
-          roles_hash = permissions_groups[pt].inject({}) do |rh, r|
+      def permission_types_nil_hash
+        permission_types_available.inject({}) do |result_hash, pt|
+          roles_hash = (permission_groups_available[pt] || []).inject({}) do |rh, r|
             rh.merge({r.to_s => nil})
           end
           
           result_hash.merge!({pt.to_s => roles_hash})
         end
-      end
-      # Temporary hash - later bind with CantangoEditor::Configuration friends"
-      def permissions_groups
-        {
-          :roles => [:admin, :user, :guest, :instructor],
-          :role_groups => [:bloggers, :editors]
-        }
-      end
-
-      def actions_available
-        [:create, :read, :write, :delete, :manage]
       end
 
       def permissions
@@ -104,7 +94,7 @@ module CantangoEditor
 
       def validate_content yml_content
         raise "#{permissions_file} should contain Hash-based information" unless yml_content.is_a?(Hash)
-        raise "#{permissions_file} should not contain permission_types not listed in #permissions_types_available" if (yml_content.keys - permissions_types_available.to_strings).size > 0
+        raise "#{permissions_file} should not contain permission_types not listed in #permission_types_available" if (yml_content.keys - permission_types_available.to_strings).size > 0
       end
 
       def permissions_file
@@ -115,7 +105,7 @@ module CantangoEditor
 
       def create_empty_permissions_file
         File.open(permissions_file_path, 'w') do |file|
-          YAML.dump(permissions_types_nil_hash, file)
+          YAML.dump(permission_types_nil_hash, file)
         end
 
         permissions_file_path
