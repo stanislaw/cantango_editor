@@ -1,5 +1,3 @@
-puts "Array required"
-
 class Array
 
   def last? el
