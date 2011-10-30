@@ -1,7 +1,8 @@
 # CantangoEditor
 
-Cantango Editor is a Rails Mountable Engine providing ??? for any Rails 3 app. 
-It was created as ... to accompany [CanTango gem](https://github.com/kristianmandrup/cantango) initial installiation and usage. Intended to be very easy to setup & use.
+Cantango Editor is a Rails mountable Engine providing web-interface for editing [CanTango](https://github.com/kristianmandrup/cantango) gem's permissions for any Rails 3 app.
+
+It is no more than a nice-looking wrapper interface which is used for editing permissions stored in special yaml file.
 
 ## Installiation
 
@@ -18,9 +19,9 @@ gem 'cantango_editor', :git => "git://github.com/stanislaw/cantango_editor.git"
 bundle update
 ```
 
-### Set up valid ??? you're gonna have in your app
+### Set up models, types, groups and actions you're gonna have in your app
 
-To understand Cantango's permission_engine's options better please see: [](https://github.com/kristianmandrup/cantango/wiki/Permissions)
+To understand Cantango's permission_engine's options better please see wiki on Cantango's [Permissions](https://github.com/kristianmandrup/cantango/wiki/Permissions).
 
 Create file cantango_editor.rb in config/initializers and write there: 
 
@@ -32,15 +33,13 @@ CantangoEditor.configure do |config|
   config.permission_types_available = [:roles, :role_groups] 
   
   # default: { :roles => [:admin, :user] }
-  config.permission_groups_available = { :roles => [:guest, :user],
-  :user_types => [:admin] }
+  config.permission_groups_available = { :roles => [:guest, :user], :user_types => [:admin] }
 
   # default: all Models extracted from ActiveRecord's tables list
   config.models_available = config.models_default - [Admin, CustomSession]
 
   # default: [:create, :read, :update, :delete, :manage]
-  config.actions_available = config.actions_default | [:write,
-  :assign_roles]
+  config.actions_available = config.actions_default | [:write, :assign_roles]
 end
 
 ```
@@ -55,4 +54,10 @@ mount CantangoEditor::Engine => "/cantango_editor"
 
 ## Todo:
 
-- More and better tests
+- Interface for categories too
+- As always ;) more and better tests
+
+## Credits:
+
+- [Stanislaw Pankevich](https://github.com/stanislaw)
+- [Marina Balioura](https://github.com/mettta)
