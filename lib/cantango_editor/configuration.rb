@@ -8,9 +8,11 @@ module CantangoEditor
     attr_accessor *conf_methods_available
 
     conf_methods.each do |cm|
-      define_method :"#{cm}_available" do
-        instance_variable_get(:"@#{cm}_available") || send(:"#{cm}_default") 
-      end
+      class_eval %{
+        def #{cm}_available 
+          @#{cm}_available ||= #{cm}_default
+        end
+      }
     end
 
     def models_default

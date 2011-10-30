@@ -23,6 +23,9 @@ describe CantangoEditor::Configuration do
       it "should allow alternate values" do
         conf.send(:"#{conf_method}_available=", [:whatever])
         conf.send(:"#{conf_method}_available").should == [:whatever]
+
+        conf.send(:"#{conf_method}_available") << :more
+        conf.send(:"#{conf_method}_available").should == [:whatever, :more]
       end
     end
   end
