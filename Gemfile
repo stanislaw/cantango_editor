@@ -13,8 +13,10 @@ gem "hashie"
 gem "sweetloader"
 
 group :development, :test do
+
   # Dummy app
   gem 'devise'
+  gem 'sqlite3'
   # Debug 
   gem 'cutter'
 

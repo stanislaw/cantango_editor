@@ -46,6 +46,7 @@ $(document).ready(function() {
   $('.models_select_close_link').live('click', function(){
     $('.new_target_link').removeAttr('disabled');
     $('.models_select_block').remove();
+    return false;
   });
   
   $('.permission_group_section').collapse();
