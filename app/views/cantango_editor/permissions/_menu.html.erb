@@ -1,8 +1,14 @@
-<div>
-  <%= link_to "Permissions", permissions_path %>
-</div>
-<div id="preview_links">
-  <%= link_to "Dev Notes ;)", notes_permissions_path %>
-  <%= link_to "Preview how permissions really work!", "##" %>
-  <%= link_to "Preview raw permissions.yml", preview_raw_permissions_path, :target => "_blank" %>
-</div>
+<%= render :partial => "main_css" %>
+<ul class="topmenu">
+  <li><%= link_to "Dev Notes ;)", notes_permissions_path %></li>
+  <li>
+    <%= link_to "##" do %>
+      <b>Preview</b> how permissions really work!
+    <% end %>
+  </li>
+  <li>
+    <%= link_to preview_raw_permissions_path, :target => "_blank" do %>
+    <b>Preview</b> raw permissions.yml
+    <% end %>
+    </li>
+</ul>

@@ -1,23 +1,32 @@
-<%= form_tag permissions_path, :remote => true, :method => :post do %>
+<%= form_tag permissions_path, :class => 'permissions_form', :remote => true, :method => :post do %>
   <!-- submit_tag -->
+  
+<% @permissions_types.each do |ptype| %>  
 
-<% @permissions_types.each do |ptype| %>
+      <h2 class="permissions_type"><%= ptype %>:</h2>
 
-  <table>
-    <th class="permissions_type">
-      <%= ptype %>
-    </th>
     <% @permissions_groups[ptype].each do |pgroup| %>
-      <tr>
-        <td colspan="4"><%= pgroup %></td><!--td></td><td></td><td></td-->
-      </tr>    
-      <th></th> <th></th>  <th>can </th>  <th>cannot</th>
+    
+    <div class="permission_group_section wrapper">
+
+      <h3><%= pgroup %></h3>
+
+      <div class="section_line_wr">
+        <div class="section_line">
+          <div class="section_h_action"></div>
+          <div class="section_h_can"><b>can</b></div>
+          <div class="section_h_cannot"><b>cannot</b></div>
+        </div>
+
       <% @actions.each do |crud_action| %> 
-      <tr> 
-        <td> </td>
-        <td class="actions_cell"> <%= crud_action %> </td> 
+      <div class="section_line">
+        <div class="section_line_action">
+          <%= crud_action %>
+        </div>
+        
         <% [:can, :cannot].each do |can_action| %>
-        <td class="models_cell"> 
+        <div class="section_line_null"></div>
+        <div class="section_line_<%= can_action %> models_cell">
           <% (targets = @permissions[ptype][pgroup][can_action][crud_action]).each do |model| %>
             <%= model_tag model %>
             &nbsp; 
@@ -25,7 +34,7 @@
             <!--small>- more options -</small-->
             <span class="delete_target_section">
               <%= hidden_field_tag "delete_target_field", model, :class => "delete_target_field", :name => "delete_permissions[#{ptype}][#{pgroup}][#{can_action}][#{crud_action}][]", :disabled => "disabled" %>
-              <%= link_to "x", "#", :class => "delete_target_link" %>
+              <%= link_to "", "#", :class => "delete_target_link" %>
             </span>
            <br/>
           <% end %>
@@ -33,13 +42,18 @@
           <%= link_to "+model", new_target_permissions_path(:ptype => ptype, :pgroup => pgroup, :can_action => can_action, :crud_action => crud_action, :existing_targets => targets), :remote => true, :class => "new_target_link" %>          
           <%= link_to "+category", new_category_permissions_path(:ptype => ptype, :pgroup => pgroup, :can_action => can_action, :crud_action => crud_action, :existing_targets => targets), :remote => true, :class => "new_target_link" %>
           <%= link_to "+custom", new_custom_target_permissions_path(:ptype => ptype, :pgroup => pgroup, :can_action => can_action, :crud_action => crud_action, :existing_targets => targets), :remote => true, :class => "new_target_link" %>
-        </td>
+        </div>
         <% end %>
-      </tr>
+        </div>
+      <div class="clearfix"></div>
+      
       <% end %>
-      <tr><td colspan="4"></td></tr>
-    <% end %>
-  </table>
+
+      </div>
+     </div>
+     
+    <% end %>  
+  
 <% end %>
 
 <% end %>

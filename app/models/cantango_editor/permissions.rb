@@ -30,7 +30,7 @@ module CantangoEditor
       # Temporary hash - later bind with CantangoEditor::Configuration friends"
       def permissions_groups
         {
-          :roles => [:admin, :user],
+          :roles => [:admin, :user, :guest, :instructor],
           :role_groups => [:bloggers, :editors]
         }
       end

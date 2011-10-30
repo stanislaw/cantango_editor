@@ -45,6 +45,8 @@ $(document).ready(function() {
   // Closes Models select dialog
   $('.models_select_close_link').live('click', function(){
     $('.new_target_link').removeAttr('disabled');
-    $(this).parents('div').remove();
+    $('.models_select_block').remove();
   });
+  
+  $('.permission_group_section').collapse();
 });
