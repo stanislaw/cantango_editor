@@ -5,6 +5,8 @@ require 'time_precise'
 require 'sweetloader'
 
 require "permissions_hash"
+
+require "sugar-high/array"
 require "sugar-high/dsl"
 
 module CantangoEditor
