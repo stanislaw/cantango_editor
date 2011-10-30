@@ -13,7 +13,7 @@ module CantangoEditor
         model = model.humanize
         
         # TODO: category aliases here
-        content_tag :span, model, :class => "model_category"
+        content_tag :span, "`#{model}`", :class => "model_category"
       when regex = /\w+#\w+=.+/
         match = model[/(\w+)#(\w+)=(.+)/]
         model = match[$1]

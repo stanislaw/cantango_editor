@@ -14,6 +14,8 @@ body
   margin:40px;
 }
 
+.new_target_link {visibility:hidden}
+
 a, a:link, a:visited {text-decoration:none; color:#fff;}
 a:hover {text-decoration:none; color:#ffffcc;}
 
@@ -65,7 +67,15 @@ table {border-collapse: collapse;}
 table .models_cell { width:350px;border:1px solid #eee; }
 table .actions_cell { color:grey }
 
+/* Targets representation */
+.model_category { color: #339999; font-size: 14px; font-style: italic; font-weight:bold;}
 
+.model_regex_slash { color: #669900; font-size:18px; font-weight:bold; }
+
+.model_relationship_equals { color: orange; font-size:18px; font-weight: bold;}
+.model_relationship_sharp { color: red; font-size:18px; font-weight: bold;}
+
+.model_ownership_sharp { color: red; font-size:18px; font-weight: bold;}
 
 /* Structure */
 
@@ -107,23 +117,23 @@ table .actions_cell { color:grey }
   -moz-border-radius: 7px;
   -webkit-border-radius: 7px;
   display:table-cell;
-  padding:10px;
 }
 .section_line_null {display:table-cell; width:2px;}
 .section_line_action {
   background:url(/assets/cantango_editor/bg_action.png);
   width:8,5%; //text-align:right; text-align:center; text-transform:uppercase; font-size:11px;
   text-shadow:0 1px 1px #e7e7c7; 
+  padding:10px; 
   vertical-align:middle;
    //margin:0 2px 2px 0; //float:left;}
 .section_line_can {
   background:url(/assets/cantango_editor/bg_can.png);
-  width:46%; //margin:0 2px 2px 0; //float:left;
-  padding:10px;}
+  padding:10px;
+  width:46%; //margin:0 2px 2px 0; //float:left;}
 .section_line_cannot {
   background:url(/assets/cantango_editor/bg_cannot.png);
-  width:45%; //margin-right:2px; //float:left;
-  padding:10px;}
+  padding:10px;
+  width:45%; //margin-right:2px; //float:left;}
 
 
 h2.permissions_type {
@@ -137,76 +147,15 @@ h2.permissions_type {
 
 /* Content */
 
-
-.delete_target_section {display:none;}
 .delete_target_link {
   display:inline-block;
-  width:16px;
-  height:16px;
-  background:url(/assets/cantango_editor/xx.png) 0 0 no-repeat;
-  margin-bottom:-4px;
-  margin-left:4px;
-  margin-right:-6px;
+  width:11px;
+  height:11px;
+  background:url(/assets/cantango_editor/x.png) 0 0 no-repeat;
 }
-a.delete_target_link:hover {
-  background:url(/assets/cantango_editor/xx.png) 0 -16px no-repeat;} 
-
-.sexy_buttons {//visibility:hidden; opacity:0.3; margin-bottom:-10px;}
-.new_target_link {}
-.add_model {
-  display:inline-block;
-  height:19px; 
-  width:50px;
-  background:url(/assets/cantango_editor/sexy.png) 0 0 no-repeat;}
-.add_category {
-  display:inline-block; 
-  height:19px; 
-  width:60px;
-  background:url(/assets/cantango_editor/sexy.png) -55px 0 no-repeat;}
-.add_custom {
-  display:inline-block; 
-  height:19px; 
-  width:53px;
-  background:url(/assets/cantango_editor/sexy.png) -120px 0 no-repeat;}
-.add_model:hover {background-position:0 -19px;}
-.add_category:hover {background-position: -55px -19px;}
-.add_custom:hover {background-position:-120px -19px;}
-
-/* Targets representation */
-
-.models_ololo {
-  
-}
-.models_line {
-  display:inline-block;
-  color: #222;
-  font-family:monospace;
-  font-weight:bold;
-  font-size:14px;
-  line-height:22px;
-  background:url(/assets/cantango_editor/bg-model.png) 0 0 repeat-x;
-  //border:1px solid #aeae8d;
-  margin:2px 0;
-  padding:0 10px;
-   border-radius: 16px;
-  -moz-border-radius: 16px;
-  -webkit-border-radius: 16px;}
-  
-.models_line .model_category {
-  color: #555; font-style: italic;
-  letter-spacing:3px;
-  }
-.models_line.first {}
-.models_line.last {margin-bottom:5px;}
-
-.model_regex_slash { color: #669900; font-size:18px; font-weight:bold; }
-
-.model_relationship_equals { color: #ffcc00; font-size:18px; font-weight: bold;}
-.model_relationship_sharp { color: #cc3333; font-size:18px; font-weight: bold;}
-
-.model_ownership_sharp { color: #cc3333; font-size:18px; font-weight: bold;}
-  
-.new_target_area {}
+a.delete_target_link:hover {background:url(/assets/cantango_editor/x.png) 0 -11px no-repeat;} 
+ 
+ 
 
 </style>
 <% end %>

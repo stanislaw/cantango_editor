@@ -174,4 +174,5 @@ DEPENDENCIES
   rspec-rails
   sqlite3
   sugar-high
+  sweetloader
   unicorn

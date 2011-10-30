@@ -27,21 +27,24 @@
         <% [:can, :cannot].each do |can_action| %>
         <div class="section_line_null"></div>
         <div class="section_line_<%= can_action %> models_cell">
+          <div class="models_ololo">
           <% (targets = @permissions[ptype][pgroup][can_action][crud_action]).each do |model| %>
+          <div class="models_line <%= (targets.first? model) ? "first" : "" %> <%= (targets.last? model) ? "last" : "" %>">
             <%= model_tag model %>
-            &nbsp; 
-            <!-- TODO: Options for applying '//', '^' or others to given model -->
-            <!--small>- more options -</small-->
             <span class="delete_target_section">
               <%= hidden_field_tag "delete_target_field", model, :class => "delete_target_field", :name => "delete_permissions[#{ptype}][#{pgroup}][#{can_action}][#{crud_action}][]", :disabled => "disabled" %>
               <%= link_to "", "#", :class => "delete_target_link" %>
             </span>
-           <br/>
+            </div>
+            <div class="clearfix"></div>
           <% end %>
-          <div id="new_target_area"></div>  
-          <%= link_to "+model", new_target_permissions_path(:ptype => ptype, :pgroup => pgroup, :can_action => can_action, :crud_action => crud_action, :existing_targets => targets), :remote => true, :class => "new_target_link" %>          
-          <%= link_to "+category", new_category_permissions_path(:ptype => ptype, :pgroup => pgroup, :can_action => can_action, :crud_action => crud_action, :existing_targets => targets), :remote => true, :class => "new_target_link" %>
-          <%= link_to "+custom", new_custom_target_permissions_path(:ptype => ptype, :pgroup => pgroup, :can_action => can_action, :crud_action => crud_action, :existing_targets => targets), :remote => true, :class => "new_target_link" %>
+          </div>
+          <div id="new_target_area" class="new_target_area"> </div> 
+          <div class="sexy_buttons">
+          <%= link_to "", new_target_permissions_path(:ptype => ptype, :pgroup => pgroup, :can_action => can_action, :crud_action => crud_action, :existing_targets => targets), :remote => true, :class => "new_target_link add_model" %>          
+          <%= link_to "", new_category_permissions_path(:ptype => ptype, :pgroup => pgroup, :can_action => can_action, :crud_action => crud_action, :existing_targets => targets), :remote => true, :class => "new_target_link add_category" %>
+          <%= link_to "", new_custom_target_permissions_path(:ptype => ptype, :pgroup => pgroup, :can_action => can_action, :crud_action => crud_action, :existing_targets => targets), :remote => true, :class => "new_target_link add_custom" %>
+           </div>
         </div>
         <% end %>
         </div>

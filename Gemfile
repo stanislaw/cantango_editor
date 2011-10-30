@@ -10,6 +10,7 @@ gem "jquery-rails"
 gem "cantango", :git => "git://github.com/stanislaw/cantango.git"
 gem "sugar-high"
 gem "hashie"
+gem "sweetloader"
 
 group :development, :test do
   # Dummy app

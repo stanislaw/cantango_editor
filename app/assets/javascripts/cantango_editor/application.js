@@ -26,15 +26,15 @@ $(document).ready(function() {
   });
 
   // Hovers events for table cells
-  $('.models_cell').live('mouseenter', function(event){
+  $('.models_cell').live('mouseenter', function(){
     timeou = setTimeout(function(target){
-      $(target).children('.new_target_link').css('visibility', 'visible')
+      $(target).children('.sexy_buttons').css('opacity', '1');
+      //$(this).children('.sexy_buttons').css('visibility', 'visible')
     }, 150, this);
-  });
-
-  $('.models_cell').live('mouseleave', function(event){ 
+  }).live('mouseleave', function(){ 
     clearTimeout(timeou);
-    $('.new_target_link').css('visibility', 'hidden');     
+    $(this).children('.sexy_buttons').css('opacity', '0.3');
+    //$('.sexy_buttons').css('visibility', 'hidden');     
   });
   
   // Enable selectmenu() on <select>
@@ -49,4 +49,10 @@ $(document).ready(function() {
   });
   
   $('.permission_group_section').collapse();
+
+  $('.models_line').live('mouseenter', function(){
+    $(this).children('.delete_target_section').show(); 
+  }).live('mouseleave',function(){
+    $(this).children('.delete_target_section').hide();   
+  });
 });

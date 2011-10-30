@@ -1,2 +1,2 @@
-$('.link_processing').before('<%= escape_javascript(render :partial => "new_custom_targets") %>');
+$('.link_processing').parents('.sexy_buttons').prev().html('<%= escape_javascript(render :partial => "new_custom_targets") %>');
 $('.link_processing').removeClass("link_processing");
