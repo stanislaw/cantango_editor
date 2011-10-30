@@ -9,4 +9,7 @@ CantangoEditor::Engine.routes.draw do
       post :update
     end
   end
+
+  root :to => "permissions#index"
+
 end
