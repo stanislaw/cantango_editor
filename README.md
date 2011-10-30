@@ -20,22 +20,39 @@ bundle update
 
 ### Set up valid ??? you're gonna have in your app
 
-Create file simple_roles.rb in config/initializers and write there:
+To understand Cantango's permission_engine's options better please see: [](https://github.com/kristianmandrup/cantango/wiki/Permissions)
+
+Create file cantango_editor.rb in config/initializers and write there: 
 
 ```ruby
-# .rb
+# Your_app's root/config/initializers/cantango_editor.rb
+CantangoEditor.configure do |config|
+
+  # default: [:user_types, :account_types, :roles, :role_groups, :licenses, :users]
+  config.permission_types_available = [:roles, :role_groups] 
+  
+  # default: { :roles => [:admin, :user] }
+  config.permission_groups_available = { :roles => [:guest, :user],
+  :user_types => [:admin] }
+
+  # default: all Models extracted from ActiveRecord's tables list
+  config.models_available = config.models_default - [Admin, CustomSession]
+
+  # default: [:create, :read, :update, :delete, :manage]
+  config.actions_available = config.actions_default | [:write,
+  :assign_roles]
+end
+
 ```
 
 ### And mount CantangoEditor somewhere in your app: 
 
 ```ruby
-# YOUR_APP's root/config/routes.rb
+# Your_app's root/config/routes.rb
 
 mount CantangoEditor::Engine => "/cantango_editor"
 ```
 
 ## Todo:
 
-- Write role groups part
-- Provide some more config options
 - More and better tests
