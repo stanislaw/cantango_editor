@@ -4,7 +4,7 @@ Cantango Editor is a Rails mountable Engine providing web-interface for editing 
 
 ## What it does
 
-It is no more than a nice-looking wrapper interface which is used for editing permissions stored in special yaml file: be default it is a config/permissions.yml. See "Yaml Permissions store" section on [Permissions](https://github.com/kristianmandrup/cantango/wiki/Permissions) for more details. 
+It is no more than a nice-looking wrapper interface which is used for editing permissions stored in special yaml file: default is a config/permissions.yml. See "Yaml Permissions store" section on [Permissions](https://github.com/kristianmandrup/cantango/wiki/Permissions) for more details. 
 
 ## Installiation
 
