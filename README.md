@@ -71,7 +71,8 @@ If you want to have good understanding of how Cantango's permissions rules work 
 ## Todo:
 
 - Interface for categories too
-- As always ;) more and better tests
+- As always more and better tests
+- Remove 'dev notes' link ;)
 
 ## Credits:
 
