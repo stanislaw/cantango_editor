@@ -1,5 +1,3 @@
-<%= content_for :styles do %>
-<style>
 /* Highlight not-done links */
 a[href^="##"] { 
   padding-right:14px !important; color:#888 !important;
@@ -63,6 +61,20 @@ ul.topmenu li a:hover {color:#000;}
 .logobig {
   background:url(/assets/cantango_editor/cantangologo_big.png) 0 0 no-repeat;
   height:95px; width:171px;
+  //float:right;
+  margin-top:20px;
+}
+
+.logobig2 {
+  background:url(/assets/cantango_editor/cantangologo_big2.png) 0 0 no-repeat;
+  height:95px; width:200px;
+  //float:right;
+  margin-top:20px;
+}
+
+.logobig3 {
+  background:url(/assets/cantango_editor/cantangologo_big3.png) 0 0 no-repeat;
+  height:95px; width:200px;
   //float:right;
   margin-top:20px;
 }
@@ -279,5 +291,4 @@ font-weight: bold; color: #ffffff; }
   font-weight: bold; color: #140f06; }
 
 
-</style>
-<% end %>
+
