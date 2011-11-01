@@ -1,5 +1,12 @@
 module CantangoEditor
   class ApplicationController < ActionController::Base
-    #before_filter { puts " ***\naction: #{action_name}, \nparams: #{params.inspect}\n *** " }
+  
+    helper_method :app_name
+
+    private
+
+    def app_name
+      Rails.application.class.parent_name
+    end
   end
 end
