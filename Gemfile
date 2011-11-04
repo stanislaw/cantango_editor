@@ -6,10 +6,9 @@ source "http://rubygems.org"
 gemspec
 
 # jquery-rails is used by the dummy application
-gem "jquery-rails"
-gem "cantango", :git => "git://github.com/stanislaw/cantango.git"
+#gem "jquery-rails"
+#gem "cantango", :git => "git://github.com/stanislaw/cantango.git"
 gem "sugar-high"
-gem "hashie"
 gem "sweetloader"
 
 group :development, :test do
