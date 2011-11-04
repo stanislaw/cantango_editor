@@ -5,10 +5,13 @@ source "http://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 
+gem "sugar-high"
+gem "sweetloader"
 gem "jquery-rails"
 
 group :development, :test do
   gem "cantango"
+
 
   gem 'jeweler'
   # Dummy app

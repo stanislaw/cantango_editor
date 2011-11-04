@@ -7,6 +7,7 @@ Bundler.require
 require 'devise'
 require "cantango"
 require "cantango_editor"
+require 'jquery-rails'
 
 module Dummy
   class Application < Rails::Application
