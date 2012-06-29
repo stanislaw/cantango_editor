@@ -1,5 +1,12 @@
 # CantangoEditor
 
+## Project ABANDONED (June 29, 2012)
+
+**I am not going to continue developing this project any further.
+If you liked it, and it serves you well for the purposes of configuring roles
+for Cantango permissions system - I would be glad to pass entire project
+repository to anyone, who is willing to take a lead on it.**
+
 Cantango Editor is a Rails mountable Engine providing web-interface for editing [CanTango](https://github.com/kristianmandrup/cantango) gem's permissions for any Rails 3 app.
 
 ## What it does
