@@ -1,5 +1,24 @@
 # CantangoEditor
 
+## Warning to folks who are newcomers to Ruby/Rails (November 2, 2013)
+
+People, don't use `cantango_editor`, don't even consider using it!
+
+Also don't use `cantango` and don't even consider using it!
+
+As a second cantango developer I claim that:
+
+1. Cantango is very unstable and it is by no means can be considered production-ready.
+
+2. Even if it was stable, it would still be unrecommended to use it because during four months of heavy development in the summer of 2011 it eventually became a very over-engineered project.
+
+3. Cantango is abandoned by both of its authors: Kristian Mandrup and
+   Stanislaw Pankevich.
+
+Think twice, if you do really need so complex role system for your Rails
+app! If you do, think twice again and consider implementing this
+complexity just using classic CanCan approach.
+
 ## Project ABANDONED (June 29, 2012)
 
 **I am not going to continue developing this project any further.
